@@ -1,0 +1,110 @@
+@import '../font/font.css';
+
+.bloc {
+    width: 80%;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 20px;
+}
+
+.flex-container {
+    display: flex;
+    width: 80%;
+    margin-left: 30px;
+}
+
+.box-shadow {
+    box-shadow: 1px 1px 20px  rgba(0, 0, 0, .22);
+}
+
+.flex-container .column{
+    flex: 1;
+    padding: 20px;
+    width: 90%;
+}
+
+.bloc-title {
+    font-weight: bold;
+    width: 100%;
+    margin-left: 30px;
+    margin-top: 30px;
+    font-size: 25px;
+    font-family: 'MarkerFeltWide';
+}
+
+.mid-bloc {
+    width: 50%;
+    float: left;
+}
+
+.mid-bloc-title {
+    font-weight: bold;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 25px;
+    font-family: 'MarkerFeltWide';
+}
+
+.right-bloc {
+    float:right; 
+    width: 90%;
+}
+
+.right-bloc .column {
+    width: 100%;
+}
+
+.highlight-button {
+    background-color: #1482ef;
+    box-shadow: 0px 0px 0px 0px #3dc21b;
+}
+
+.downlight-button {
+    background-color: #d1d2d6;
+}
+
+.highlight-button:hover {
+    box-shadow: 1px 1px 20px #1482ef;
+}
+
+.downlight-button:hover {
+    box-shadow: 1px 1px 20px #d1d2d6;
+}
+
+.button {
+	border-radius:28px;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:17px;
+	padding:12px 75px;
+	text-decoration:none;
+}
+.button:active {
+    position:relative;
+    color: white;
+	top:1px;
+}
+
+.bloc-buttons {
+    text-align: center;
+    color: white;
+}
+
+.mandatory {
+    color: red;
+    margin: 5px;
+}
+
+.error {
+    font-weight: bold;
+    color: #F55;
+}
+
+input {
+    border-radius:28px;
+    border: solid 1px #D7DAE2;
+    margin: 5px;
+    padding:3px;
+    width: 94%;
+    padding-left: 10px;
+}

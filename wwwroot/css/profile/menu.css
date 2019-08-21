@@ -1,0 +1,107 @@
+@import '../font/font.css';
+
+.top-menu {
+    background: linear-gradient(to right, #26628C, #007A8C, #1FB2A9);
+    height: 115px;
+}
+
+.logo {
+    background-image: url("../../assets/LOGO_LIVE.png");
+    background-repeat: no-repeat;
+    width: 140px;
+    height: 140px;
+    margin: 20px;
+    position: absolute;
+}
+
+.info {
+    float: right;
+    width: 50%;
+    height: 100%;
+}
+
+.log-off {
+    background-image: url("../../assets/log_out.png");
+    background-repeat: no-repeat;
+    margin-top: 24px;
+    margin-right: 42px;
+    height: 70px;
+    width: 70px;
+    float: right;
+    cursor: pointer;
+}
+
+.menu-text {
+    font-family: DINPro;
+    float: right;
+    color: white; 
+}
+
+.menu-text label {
+    font-weight: 600;
+    font-size: 28px;
+    padding-right: 25px;
+    padding-top: 37px;
+}
+
+.menu-title {
+    color: white; 
+    padding-left: 50px;
+    padding-top: 33px;
+    width: 750px;
+    float: left;
+}
+
+.menu-title label {
+    font-weight: 500;
+    font-size: 42px;
+    font-family: 'MarkerFeltWide';
+}
+
+.menu-left {
+    width: 132px;
+    background-color: #25628C;
+    height: 100%;
+    float: left;
+    padding-top: 180px;
+}
+
+.menu-left div {
+    width: 70px;
+    height: 70px;
+    color: white;
+    font-family: 'MarkerFeltWide';
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.content {
+    width: 1500px;
+    padding: 20px;
+    float: left;
+}
+
+body > div {
+    height: 100%;
+}
+
+.menu-accueil {
+    margin-left: 30px;
+}
+.menu-accueil img {
+    padding-left: 15px;
+}
+
+.menu-catalogue {
+    margin-left: 20px;
+}
+.menu-catalogue img {
+    padding-left: 20px;
+}
+
+.menu-immersion {
+    margin-left: 15px;
+}
+.menu-immersion img {
+    padding-left: 25px;
+}
