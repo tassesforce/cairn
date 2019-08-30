@@ -2,7 +2,9 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using cairn.Accounts.Auth;
 using cairn.Constant;
 using FluentEmail.Core;
@@ -38,11 +40,12 @@ namespace cairn.Controllers.Auth
             {
                 
                 RestClient client = new RestClient(configuration["API:Host"]);
+
                 string correlationId = Guid.NewGuid().ToString();
                 var request = HttpHelper.CreateBaseRequest(new HttpCriterias{
                     Uri = configuration["API:Urls:Garda:AuthUser"],
-                    Method = Method.POST,
-                    CorrelationId = correlationId
+                    Method = Method.POST
+                    // CorrelationId = correlationId
                 });
                 AuthenticateUser auth = new AuthenticateUser();
                 auth.ClientId = configuration["JWT:ClientId"];

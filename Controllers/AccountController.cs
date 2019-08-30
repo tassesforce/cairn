@@ -48,6 +48,8 @@ namespace cairn.Controllers.Accounts
         /// <returns>IActionResult : In case of an error, returns the IActionResult corresponding, null if alright</returns>
         private IActionResult AddUserAuth(RestClient client, string correlationId, AddUserAuthForm userForm)
         {
+            logger.LogInformation("uri : " + configuration["API:Urls:Garda:Auth"]);
+            logger.LogInformation("base url : " + client.BaseUrl);
             RestRequest requestAuth = HttpHelper.CreateBaseRequest(new HttpCriterias{
                 Uri = configuration["API:Urls:Garda:Auth"],
                 Method = Method.POST,
