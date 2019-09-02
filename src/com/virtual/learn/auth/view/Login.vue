@@ -1,14 +1,5 @@
 <template>
     <div style="height: 100%">
-        <div id="left-menu" class="menu-left">
-            
-        </div>
-        <div id="top-menu" class="top-menu">
-            <div class="logo"></div>
-            <div class="menu-title">
-                <label>Learn in Virtual environment</label>
-            </div>
-        </div>
         <div id="content" class="content">
             <div class="box-shadow content-login">
                 <input type="text" name="login" v-model="input.login" placeholder="Username" autofocus />

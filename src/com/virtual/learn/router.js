@@ -9,6 +9,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VeeValidate from 'vee-validate';
 import VueShortkey from 'vue-shortkey';
 
+import DefaultProfileComponent from "./auth/view/DefaultProfile.vue"
 import AgencyProfileComponent from "./account/view/agency/AgencyProfile.vue"
 import CandidateProfileComponent from "./account/view/candidate/CandidateProfile.vue"
 import CompanyProfileComponent from "./account/view/company/CompanyProfile.vue"
@@ -39,14 +40,20 @@ const router = new Router({
     routes: [
         {
             path: '/',
-            redirect: {
-                name: "login"
-            }
-        },
-        {
-            path: "/login",
-            name: "login",
-            component: LoginComponent
+            name: "home",
+            component: DefaultProfileComponent,
+            children: [
+                {
+                    path: "/login",
+                    name: "login",
+                    component: LoginComponent
+                },
+                {
+                    path: "/account",
+                    name: "createAccount",
+                    component: CreateAccountComponent
+                }
+              ]
         },
         {
             path: "/profile/agency",
@@ -135,11 +142,6 @@ const router = new Router({
                     component: CatalogComponent
                 }
               ]
-        },
-        {
-            path: "/account",
-            name: "createAccount",
-            component: CreateAccountComponent
         }
     ],
     mode: 'history'

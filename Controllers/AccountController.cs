@@ -397,7 +397,7 @@ namespace cairn.Controllers.Accounts
                 RestClient client = new RestClient(configuration["API:Host"]);
 
                 RestRequest request = HttpHelper.CreateBaseRequest(new HttpCriterias{
-                    Uri = configuration["API:Urls:Garda:Auth"] + loginClaim.Value,
+                    Uri = configuration["API:Urls:Garda:Auth"],
                     Method = Method.DELETE,
                     CorrelationId = correlationId
                 });

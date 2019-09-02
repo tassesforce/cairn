@@ -109,7 +109,7 @@
                         url: url,
                         data: this.account
                     }).then(function(response) {
-                        instance.$router.push("/readAccount");
+                        instance.$router.push({name: "agencyProfile"});
                     }).catch(function (error) {
                         console.log(error);
                     });

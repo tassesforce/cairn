@@ -1,6 +1,6 @@
 <template>
   <div id="app" style="height: 100%">
-    <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+    <router-link v-if="authenticated" to="/home" v-on:click.native="logout()" replace>Logout</router-link>
       <!-- the router outlet, where all matched components would ber viewed -->
     <router-view></router-view>
   </div>

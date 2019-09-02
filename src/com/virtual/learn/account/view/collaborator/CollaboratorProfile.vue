@@ -65,10 +65,10 @@
             GoToCatalog() {
                 console.log("Go modules");
                 this.$router.push({name: "catalogCollaborator"});
-            },
-            displayPersonnalName(account) {
-                console.log("checkpoint 2");
-                Object.assign(this.firstName, account.firstName);
+            // },
+            // displayPersonnalName(account) {
+            //     console.log("checkpoint 2");
+            //     Object.assign(this.firstName, account.firstName);
             }
         }
     }
