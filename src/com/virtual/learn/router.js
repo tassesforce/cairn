@@ -20,12 +20,16 @@ import ReadAccountComponent from "./account/view/ReadAccount.vue"
 import CreateCollaboratorAccountComponent from "./account/view/collaborator/CreateCollaboratorAccount.vue"
 import CollaboratorAccountComponent from "./account/view/collaborator/CollaboratorAccount.vue"
 import CatalogComponent from "./module/view/Catalog.vue"
+import VuejsDialog from "vuejs-dialog"
+
+import 'vuejs-dialog/dist/vuejs-dialog.min.css';
 
 Vue.use(VeeValidate);
 Vue.use(BootstrapVue)
 Vue.use(Router)
 Vue.use(VueResource);
 Vue.use(VueShortkey);
+Vue.use(VuejsDialog);
 
 axios.defaults.withCredentials = true;
 axios.defaults.headers.common = {

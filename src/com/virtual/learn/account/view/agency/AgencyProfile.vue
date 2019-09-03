@@ -19,7 +19,7 @@
             <!-- <button class="logoff" type="button" v-on:click="logoff()">Déconnexion</button> -->
         </div>
         <div id="content" class="content">
-            <router-view v-on:account-loaded="displayPersonnalName"></router-view>
+            <router-view></router-view>
         </div>
     </div>
 </template>
@@ -69,7 +69,4 @@
 </script>
 
 <style scoped>
-.logOff {
-    float: right;
-}
 </style>

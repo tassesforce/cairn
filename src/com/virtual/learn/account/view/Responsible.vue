@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h2>Responsable</h2>
         <div id="updateResponsible" v-if="readOnly === false">
             <span class="mandatory">*</span><input type="text" name="firstName" v-model="baseModel.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" />
             <p v-if="errorLabels.firstNameError.length > 0" class="error">{{errorLabels.firstNameError}}</p><br v-else/>

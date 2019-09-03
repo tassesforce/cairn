@@ -1,0 +1,27 @@
+.collaborators-container {
+    border-top: solid 1px rgba(0, 0, 0, 0.22);
+}
+
+.collaborators {
+    width: 300px;
+    padding: 20px;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.icons {
+    width: 30px;
+}
+
+.collaborators-title {
+    font-weight: bold;
+    width: 50%;
+    margin-top: 30px;
+    font-size: 25px;
+    font-family: 'MarkerFeltWide';
+}
+
+.title-button {
+    float: right;
+    margin-top: 25px;
+}

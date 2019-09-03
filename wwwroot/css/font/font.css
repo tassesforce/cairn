@@ -1,10 +1,10 @@
-/* @font-face {
+@font-face {
   font-family: "MarkerFelt";
   src:  url("../../assets/fonts/MarkerFelt.woff2") format("woff2"),
         url("../../assets/fonts/MarkerFelt.woff") format("woff"),
         url("../../assets/fonts/MarkerFelt.ttf") format("truetype");
   font-display: optional;
-} */
+}
 
 @font-face {
   font-family: "MarkerFeltWide";

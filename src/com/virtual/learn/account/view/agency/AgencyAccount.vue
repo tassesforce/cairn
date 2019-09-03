@@ -1,42 +1,64 @@
 <template>
     <div>
-        <h1>Agence</h1>
+        <label class="title">Mon profil Agence</label>
+        <div id="updateAgency" v-if="readOnly === false" class="flex-container">
+            <div class="mid-bloc">
+                <label class="mid-bloc-title">Coordonnées de l'agence</label>
+                <div class="column box-shadow">
+                    <input type="text" name="name" v-model="baseModel.model.name" placeholder="Name" v-on:blur="validateName()" /><span class="mandatory">*</span>
+                    <p v-if="errorLabels.nameError.length > 0" class="error">{{errorLabels.nameError}}</p><br v-else/>
+                    <input type="text" name="siret" v-model="baseModel.model.siret" placeholder="Siret" v-on:blur="validateSiret()" /><span class="mandatory">*</span>
+                    <p v-if="errorLabels.siretError.length > 0" class="error">{{errorLabels.siretError}}</p><br v-else/>
+                    <adress ref="adressMarkdown" :baseModel="baseModel.model.adress" :readOnly="readOnly"></adress>
+                </div>
+            </div>
+            <div class="mid-bloc">
+                <label class="mid-bloc-title">Coordonnées du contact principal</label>
+                <div class="column box-shadow">
+                    <responsible ref="responsibleMarkdown" :baseModel="baseModel.model.responsible" :readOnly="readOnly"></responsible>
+                    <contact ref="contactMarkdown" :baseModel="baseModel.model.contact" :readOnly="readOnly"></contact>
+                </div>
+            </div>
+        </div>
+
+        <div id="readAgency" v-if="readOnly === true" class="flex-container"> 
+            <div class="mid-bloc">
+                <label class="mid-bloc-title">Coordonnées de l'agence</label>
+                <div class="column box-shadow">
+                    <p>{{baseModel.model.name}}</p>
+                    <p>{{baseModel.model.siret}}</p>
+                    <adress ref="adressMarkdown" :baseModel="baseModel.model.adress" :readOnly="readOnly"></adress>
+                </div>
+            </div>
+            <div class="mid-bloc">
+                <label class="mid-bloc-title">Coordonnées du contact principal</label>
+                <div class="column box-shadow">
+                    <responsible ref="responsibleMarkdown" :baseModel="baseModel.model.responsible" :readOnly="readOnly"></responsible>
+                    <contact ref="contactMarkdown" :baseModel="baseModel.model.contact" :readOnly="readOnly"></contact>
+                </div>
+            </div>
+            
+        </div>
+
         <div id="agencyAuth">
             <auth ref="authMarkdown" :baseModel="baseModel.auth" :readOnly="readOnly"></auth>
         </div>
-        <div id="updateAgency" v-if="readOnly === false">
-            <span class="mandatory">*</span><input type="text" name="name" v-model="baseModel.model.name" placeholder="Name" v-on:blur="validateName()" />
-            <p v-if="errorLabels.nameError.length > 0" class="error">{{errorLabels.nameError}}</p><br v-else/>
-            <span class="mandatory">*</span><input type="text" name="siret" v-model="baseModel.model.siret" placeholder="Siret" v-on:blur="validateSiret()" />
-            <p v-if="errorLabels.siretError.length > 0" class="error">{{errorLabels.siretError}}</p><br v-else/>
-            <input type="text" name="sector" v-model="baseModel.model.sector" placeholder="Sector" />
-        </div>
 
-        <div id="readAgency" v-if="readOnly === true">
-            <p>{{baseModel.model.name}}</p>
-            <p>{{baseModel.model.siret}}</p>
-            <p>{{baseModel.model.sector}}</p>
-        </div>
-        <div id="agencyContact">
-            <div><contact ref="contactMarkdown" :baseModel="baseModel.model.contact" :readOnly="readOnly"></contact></div>
-        </div>
-        <div id="agencyAdress">
-            <div><adress ref="adressMarkdown" :baseModel="baseModel.model.adress" :readOnly="readOnly"></adress></div>
-        </div>
-        <div id="agencyResponsible">
-            <div><responsible ref="responsibleMarkdown" :baseModel="baseModel.model.responsible" :readOnly="readOnly"></responsible></div>
-        </div>
         <br/>
-        <div id="collaborators">
-            <div class="collaborators" v-for="collab in baseModel.model.collaborators" v-bind:key="collab.id" >
-                <div v-on:click="seeCollab(collab.id)">
-                    {{collab.firstName}} {{collab.lastName}}<br/>
-                    <div v-if="typeof collab.position != 'undefined' && collab.position.length > 0">
-                        {{collab.position}}
+        <div id="collaborators" class="flex-container collaborators-container">
+            <div class="w100p">
+                <label class="collaborators-title">Collaborateurs</label>
+                <a class="button highlight-button title-button" v-on:click="createCollaborator()">Créer</a>
+                <div class="collaborators box-shadow" v-for="collab in baseModel.model.collaborators" v-bind:key="collab.id" >
+                    <div><img src="../../../images/icons/trash.png" align= "right" class="icons" v-on:click="deleteCollab(collab.id)"/></div>
+                    <div v-on:click="seeCollab(collab.id)">
+                        {{collab.firstName}} {{collab.lastName}}<br/>
+                        <div v-if="typeof collab.position != 'undefined' && collab.position.length > 0">
+                            {{collab.position}}
+                        </div>
+                        <contact :baseModel="collab.contact" :readOnly="true"></contact>
                     </div>
-                    <contact :baseModel="collab.contact" :readOnly="true"></contact>
                 </div>
-                <img src="../../../images/icons/trash.png" class="icons" v-on:click="deleteCollab(collab.id)"/>
             </div>
         </div>
     </div>
@@ -133,23 +155,32 @@
                 this.$router.push({ name: 'readEmbeddedCollaboratorAccount', params: { readOnly: true, search: true, id: idCollab, embedded: true} });
             },
             deleteCollab(idCollab) {
-                console.log("deleteCollab " + idCollab);
-                if (typeof idCollab != 'undefined' && idCollab.length > 0) {
-                    // mandatory
-                    // the instance that 'this' reference in axios doesn't point to the vue instance
-                    var instance = this;
-                    var url = "/Account/DeleteCollaboratorAccount?userId=" + idCollab;
-                    axios({
-                        method: 'delete',
-                        url: url
-                    }).then(function(response) {
-                        console.log("Suppression faite");
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
-                } else {
-                    // show error is vide (should not happen)
-                }
+                this.$dialog.confirm('La suppression de ce compte est définitive. Souhaitez-vous continuer ?')
+                .then(function () {
+                    if (typeof idCollab != 'undefined' && idCollab.length > 0) {
+                        // mandatory
+                        // the instance that 'this' reference in axios doesn't point to the vue instance
+                        var instance = this;
+                        var url = "/Account/DeleteCollaboratorAccount?userId=" + idCollab;
+                        axios({
+                            method: 'delete',
+                            url: url
+                        }).then(function(response) {
+                            //TODO supprimer le collab de la liste
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    } else {
+                        // show error is vide (should not happen)
+                    }
+                })
+                .catch(function () {
+                    // show error TODO
+                });
+                
+            },
+            createCollaborator() {
+                this.$router.push({ name: 'createEmbeddedCollaboratorAccount', params: { readOnly: false, name: this.baseModel.model.name, adress: this.baseModel.model.adress, search: false } });
             }
         },
         props: ['baseModel', 'readOnly']
@@ -157,14 +188,6 @@
     }
 </script>
 
-.collaborators {
-    border: solid black 1px;
-    width: 200px;
-    margin: 20px;
-    padding: 20px;
-}
-
-.icons {
-    width: 30px;
-}
+<style scoped>
+    @import '../../../../../../../wwwroot/css/account/collaborator.css';
 </style>

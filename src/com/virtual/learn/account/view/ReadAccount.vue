@@ -5,7 +5,6 @@
             <div class="form">
                 <div id="agency" v-if="accountType === 'agency'">
                     <agencyAccount ref="agency" :baseModel="this.account" :readOnly="true"></agencyAccount>
-                    <button type="button" v-on:click="createCollaborator()">Créer un collaborateur</button>
                 </div>
                 <div id="company" v-if="accountType === 'company'">
                     <companyAccount ref="company" :baseModel="this.account" :readOnly="true"></companyAccount>
@@ -57,9 +56,6 @@
             update() {
                 var route = 'update' + this.accountType.charAt(0).toUpperCase() + this.accountType.slice(1) + "Account";
                 this.$router.push({ name: route, params: { id: this.account.model.userId } });
-            },
-            createCollaborator() {
-                this.$router.push({ name: 'createEmbeddedCollaboratorAccount', params: { readOnly: false, name: this.account.model.name, adress: this.account.model.adress, search: false } });
             }
         },
         components: {

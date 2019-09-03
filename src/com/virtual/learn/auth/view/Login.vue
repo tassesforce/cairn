@@ -93,4 +93,8 @@
     @import '../../../../../../wwwroot/css/profile/menu.css';
     @import '../../../../../../wwwroot/css/form/form.css';
     @import '../../../../../../wwwroot/css/auth/login.css';
+
+input {
+    width: 100%;
+}
 </style>
