@@ -17,8 +17,7 @@
     box-shadow: 1px 1px 20px  rgba(0, 0, 0, .22);
 }
 
-.flex-container .column{
-    flex: 1;
+.column{
     padding: 20px;
 }
 
@@ -34,6 +33,7 @@
 .mid-bloc {
     width: 50%;
     float: left;
+    flex: 1;
 }
 
 .mid-bloc-title {
@@ -178,4 +178,9 @@ a:hover {
 
 .bigInlineField input {
     width: 86%;
+}
+
+.equalInlineField {
+    width: 49%;
+    display: inline-block;
 }

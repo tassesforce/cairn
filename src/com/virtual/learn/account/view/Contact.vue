@@ -13,9 +13,9 @@
         </div>
 
         <div id="readContact" v-if="readOnly === true">
-            <label>{{baseModel.phone}}</label><br v-if="baseModel.phone != ''"/>
-            <label>{{baseModel.mail}}</label><br v-if="baseModel.mail != ''"/>
-            <label>{{baseModel.web}}</label>
+            <label v-if="baseModel.phone">{{baseModel.phone}}</label><br v-if="baseModel.phone"/>
+            <label v-if="baseModel.mail">{{baseModel.mail}}</label><br v-if="baseModel.mail"/>
+            <label v-if="baseModel.web">{{baseModel.web}}</label>
         </div>
     </div>
 </template>

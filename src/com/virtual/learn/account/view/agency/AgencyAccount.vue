@@ -1,45 +1,35 @@
 <template>
     <div>
         <label class="title">Mon profil Agence</label>
+        <div class="titleLeftCoordonnees titleCoordonnees">
+            <label class="mid-bloc-title">Coordonnées de l'agence</label>
+        </div>
+        <div class="titleRightCoordonnees titleCoordonnees">
+            <label class="mid-bloc-title">Coordonnées du contact principal</label>
+        </div>
         <div id="updateAgency" v-if="readOnly === false" class="flex-container">
-            <div class="mid-bloc">
-                <label class="mid-bloc-title">Coordonnées de l'agence</label>
-                <div class="w90p column box-shadow">
-                    <input type="text" name="name" v-model="baseModel.model.name" placeholder="Name" v-on:blur="validateName()" />
-                    <p v-if="errorLabels.nameError.length > 0" class="error">{{errorLabels.nameError}}</p><br v-else/>
-                    <input type="text" name="siret" v-model="baseModel.model.siret" placeholder="Siret" v-on:blur="validateSiret()" />
-                    <p v-if="errorLabels.siretError.length > 0" class="error">{{errorLabels.siretError}}</p><br v-else/>
-                    <adress ref="adressMarkdown" :baseModel="baseModel.model.adress" :readOnly="readOnly"></adress>
-                </div>
+            <div class="w90p column box-shadow">
+                <input type="text" name="name" v-model="baseModel.model.name" placeholder="Name" v-on:blur="validateName()" />
+                <p v-if="errorLabels.nameError.length > 0" class="error">{{errorLabels.nameError}}</p><br v-else/>
+                <input type="text" name="siret" v-model="baseModel.model.siret" placeholder="Siret" v-on:blur="validateSiret()" />
+                <p v-if="errorLabels.siretError.length > 0" class="error">{{errorLabels.siretError}}</p><br v-else/>
+                <adress ref="adressMarkdown" :baseModel="baseModel.model.adress" :readOnly="readOnly"></adress>
             </div>
-            <div class="mid-bloc">
-                <div class="w90p" style="float:right">
-                    <label class="mid-bloc-title">Coordonnées du contact principal</label>
-                </div>
-                <div class="w90p column box-shadow" style="float: right">
-                    <responsible ref="responsibleMarkdown" :baseModel="baseModel.model.responsible" :readOnly="readOnly"></responsible>
-                    <contact ref="contactMarkdown" :baseModel="baseModel.model.contact" :readOnly="readOnly"></contact>
-                </div>
+            <div class="w90p column box-shadow fright " style="margin-left:10%;">
+                <responsible ref="responsibleMarkdown" :baseModel="baseModel.model.responsible" :readOnly="readOnly"></responsible>
+                <contact ref="contactMarkdown" :baseModel="baseModel.model.contact" :readOnly="readOnly"></contact>
             </div>
         </div>
 
         <div id="readAgency" v-if="readOnly === true" class="flex-container"> 
-            <div class="mid-bloc">
-                <label class="mid-bloc-title">Coordonnées de l'agence</label>
-                <div class="w90p column box-shadow">
-                    <p>{{baseModel.model.name}}</p>
-                    <p>{{baseModel.model.siret}}</p>
-                    <adress ref="adressMarkdown" :baseModel="baseModel.model.adress" :readOnly="readOnly"></adress>
-                </div>
+            <div class="w90p column box-shadow">
+                <p>{{baseModel.model.name}}</p>
+                <p>{{baseModel.model.siret}}</p>
+                <adress ref="adressMarkdown" :baseModel="baseModel.model.adress" :readOnly="readOnly"></adress>
             </div>
-            <div class="mid-bloc">
-                <div class="w90p" style="float:right">
-                    <label class="mid-bloc-title">Coordonnées du contact principal</label>
-                </div>
-                <div class="w90p column box-shadow" style="float: right">
-                    <responsible ref="responsibleMarkdown" :baseModel="baseModel.model.responsible" :readOnly="readOnly"></responsible>
-                    <contact ref="contactMarkdown" :baseModel="baseModel.model.contact" :readOnly="readOnly"></contact>
-                </div>
+            <div class="w90p column box-shadow fright " style="margin-left:10%;">
+                <responsible ref="responsibleMarkdown" :baseModel="baseModel.model.responsible" :readOnly="readOnly"></responsible>
+                <contact ref="contactMarkdown" :baseModel="baseModel.model.contact" :readOnly="readOnly"></contact>
             </div>
             
         </div>
@@ -204,4 +194,17 @@
 
 <style scoped>
     @import '../../../../../../../wwwroot/css/account/collaborator.css';
+
+.titleLeftCoordonnees {
+    margin-left: 30px;
+}
+
+.titleRightCoordonnees label {
+    margin-left: 10%;
+}
+
+.titleCoordonnees {
+    width: 40%;
+    display: inline-block;
+}
 </style>

@@ -1,12 +1,16 @@
 <template>
     <div>
         <div id="updateAuth" v-if="readOnly === false">
-            <input type="text" name="login" v-model.trim="baseModel.login" placeholder="Login" v-on:blur="validateLogin()" />
-            <p v-if="errorLabels.loginError.length > 0" class="error">{{errorLabels.loginError}}</p><br v-else/>
-            <input type="password" name="password" v-model.trim="baseModel.password" placeholder="Password" v-on:blur="validatePassword()" />
-            <p v-if="errorLabels.passwordError.length > 0" class="error">{{errorLabels.passwordError}}</p><br v-else/>
-            <input type="password" name="verifPassword" v-model.trim="verifPassword" v-on:blur="validateVerifPassword()" />
-            <p v-if="errorLabels.verifPasswordError.length > 0" class="error">{{errorLabels.verifPasswordError}}</p><br v-else/>
+            <div class="equalInlineField">
+                <input type="text" name="login" v-model.trim="baseModel.login" placeholder="Login" v-on:blur="validateLogin()" />
+                <p v-if="errorLabels.loginError.length > 0" class="error">{{errorLabels.loginError}}</p><br v-else/>
+            </div>
+            <div class="equalInlineField">
+                <input type="password" name="password" v-model.trim="baseModel.password" placeholder="Password" v-on:blur="validatePassword()" />
+                <p v-if="errorLabels.passwordError.length > 0" class="error">{{errorLabels.passwordError}}</p><br v-else/>
+            </div>
+            <!-- <input type="password" name="verifPassword" v-model.trim="verifPassword" v-on:blur="validateVerifPassword()" />
+            <p v-if="errorLabels.verifPasswordError.length > 0" class="error">{{errorLabels.verifPasswordError}}</p><br v-else/> -->
         </div>
         <div id="readAuth" v-if="readOnly === true">
             <p>{{baseModel.login}}</p>
@@ -55,9 +59,9 @@ export default {
             if (!this.validatePassword()) {
                 valid = false;
             }
-            if (!this.validateVerifPassword()) {
-                valid = false;
-            }
+            // if (!this.validateVerifPassword()) {
+            //     valid = false;
+            // }
             return valid;
         },
         validateLogin() {
