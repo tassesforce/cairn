@@ -35,10 +35,13 @@
             </div>
         </div>
 
-        <label class="bloc-title">Identifiants de connexion</label>
-        <div id="collaboratorAuth" class="bloc box-shadow" v-if="embedded == false">
-            <auth ref="authMarkdown" :baseModel="account.auth" :readOnly="this.readOnly"></auth>
-        </div><br/>
+        <div v-if="embedded == false">
+            <label class="bloc-title">Identifiants de connexion</label>
+            <div id="collaboratorAuth" class="bloc box-shadow">
+                <auth ref="authMarkdown" :baseModel="account.auth" :readOnly="this.readOnly"></auth>
+            </div>
+        </div>
+        
 
 
         <br/>
