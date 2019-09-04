@@ -1,28 +1,50 @@
 <template>
     <div>
-        <h1>Collaborateur</h1>
-
-        <div>
-            <p>{{this.referentName}}</p>
-            <adress :baseModel="this.referentAdress" :readOnly="true" />
+        <label class="title">Profil Collaborateur</label>
+        <div class="flex-container">
+            <div class="w100p">
+                <label class="mid-bloc-title">Mon agence</label>
+                <div class="w100p column box-shadow">
+                    <p>{{this.referentName}}</p>
+                    <adress :baseModel="this.referentAdress" :readOnly="true" />
+                </div>
+            </div>
         </div>
-        <br/>
-        <div id="collaboratorAuth">
-            <auth ref="authMarkdown" :baseModel="account.auth" :readOnly="false"></auth>
-        </div><br/>
-        <div id="updateCollaborator">
-            <input type="text" name="firstName" v-model="account.model.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" />
-            <p v-if="errorLabels.firstNameError.length > 0" class="error">{{errorLabels.firstNameError}}</p><br v-else/>
-            <input type="text" name="lastName" v-model="account.model.lastName" placeholder="LastName" v-on:blur="validateLastName()" />
-            <p v-if="errorLabels.lastNameError.length > 0" class="error">{{errorLabels.lastNameError}}</p><br v-else/>
-            <input type="text" name="position" v-model="account.model.position" placeholder="Position" />
-        </div>
-        <contact ref="contactMarkdown" :baseModel="account.model.contact" :readOnly="false"></contact>
 
-        <br/>
-        <div  v-if="this.readOnly == false">
-            <button type="button" v-on:click="cancel()">Annuler</button>
-            <button type="button" v-on:click="save()">Créer</button>
+        <div class="titleLeftColumns titleColumns">
+            <label class="mid-bloc-title">Informations du collaborateur</label>
+        </div>
+        <div class="titleRightColumns titleColumns">
+            <label class="mid-bloc-title">Coordonnées du collaborateur</label>
+        </div>
+        <div id="updateCollaborator" class="flex-container">
+            <div class="w90p column box-shadow">
+                <input type="text" name="firstName" v-model="account.model.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" />
+                <p v-if="errorLabels.firstNameError.length > 0" class="error">{{errorLabels.firstNameError}}</p><br v-else/>
+                <input type="text" name="lastName" v-model="account.model.lastName" placeholder="LastName" v-on:blur="validateLastName()" />
+                <p v-if="errorLabels.lastNameError.length > 0" class="error">{{errorLabels.lastNameError}}</p><br v-else/>
+                <input type="text" name="position" v-model="account.model.position" placeholder="Position" />
+            </div>
+            <div class="w90p column box-shadow fright " style="margin-left:10%;">
+                <contact ref="contactMarkdown" :baseModel="account.model.contact" :readOnly="false"></contact>
+            </div>
+            
+        </div>
+
+       <div class="flex-container">
+            <div class="w100p">
+                <label class="mid-bloc-title">Identifiants de connexion</label>
+                <div class="w100p column box-shadow">
+                    <div id="agencyAuth">
+                        <auth ref="authMarkdown" :baseModel="account.auth" :readOnly="false"></auth>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="buttons" class="bloc-buttons">
+            <a class="button downlight-button" v-on:click="cancel()">Annuler</a>
+            <a class="button highlight-button" v-on:click="save()">Créer</a>
         </div>
     </div>
 </template>
@@ -131,7 +153,7 @@
                 }
             },
             cancel() {
-                this.$router.push('/readAccount');
+                this.$router.go(-1);
             },
             validateForm() {
                 // Validate the form, to see if we can perform the final action

@@ -1,10 +1,10 @@
 <template>
     <div>
         <label class="title">Mon profil Agence</label>
-        <div class="titleLeftCoordonnees titleCoordonnees">
+        <div class="titleLeftColumns titleColumns">
             <label class="mid-bloc-title">Coordonnées de l'agence</label>
         </div>
-        <div class="titleRightCoordonnees titleCoordonnees">
+        <div class="titleRightColumns titleColumns">
             <label class="mid-bloc-title">Coordonnées du contact principal</label>
         </div>
         <div id="updateAgency" v-if="readOnly === false" class="flex-container">
@@ -36,7 +36,7 @@
 
         <div class="flex-container">
             <div class="w100p">
-                <label class="mid-bloc-title">Coordonnées de l'agence</label>
+                <label class="mid-bloc-title">Identifiants de connexion</label>
                 <div class="w100p column box-shadow">
                     <div id="agencyAuth">
                         <auth ref="authMarkdown" :baseModel="baseModel.auth" :readOnly="readOnly"></auth>
@@ -194,17 +194,4 @@
 
 <style scoped>
     @import '../../../../../../../wwwroot/css/account/collaborator.css';
-
-.titleLeftCoordonnees {
-    margin-left: 30px;
-}
-
-.titleRightCoordonnees label {
-    margin-left: 10%;
-}
-
-.titleCoordonnees {
-    width: 40%;
-    display: inline-block;
-}
 </style>
