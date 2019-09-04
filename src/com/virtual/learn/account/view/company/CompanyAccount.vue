@@ -5,9 +5,9 @@
             <auth ref="authMarkdown" :baseModel="baseModel.auth" :readOnly="readOnly"></auth>
         </div>
         <div v-if="readOnly === false">
-            <span class="mandatory">*</span><input type="text" name="name" v-model="baseModel.model.name" placeholder="Name" v-on:blur="validateName()" />
+            <input type="text" name="name" v-model="baseModel.model.name" placeholder="Name" v-on:blur="validateName()" />
             <p v-if="errorLabels.nameError.length > 0" class="error">{{errorLabels.nameError}}</p><br v-else/>
-            <span class="mandatory">*</span><input type="text" name="siret" v-model="baseModel.model.siret" placeholder="Siret" v-on:blur="validateSiret()" />
+            <input type="text" name="siret" v-model="baseModel.model.siret" placeholder="Siret" v-on:blur="validateSiret()" />
             <p v-if="errorLabels.siretError.length > 0" class="error">{{errorLabels.siretError}}</p><br v-else/>
             <input type="text" name="sector" v-model="baseModel.model.sector" placeholder="Sector" />
         </div>

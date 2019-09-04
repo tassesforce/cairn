@@ -7,15 +7,15 @@
         <div id="updateCandidate" v-if="readOnly === false">
             <div>
                 <br/>
-                <span class="mandatory">*</span><input type="radio" id="m" value="M." v-model="baseModel.model.civility">
+                <input type="radio" id="m" value="M." v-model="baseModel.model.civility">
                 <label for="m">M.</label>
                 <input type="radio" id="mme" value="Mme" v-model="baseModel.model.civility">
                 <label for="mme">Mme</label>
                 <p v-if="errorLabels.civilityError.length > 0" class="error">{{errorLabels.civilityError}}</p><br v-else/>
 
-                <span class="mandatory">*</span><input type="text" name="firstName" v-model="baseModel.model.firstName" placeholder="Prénom" v-on:blur="validateFirstName()" />
+                <input type="text" name="firstName" v-model="baseModel.model.firstName" placeholder="Prénom" v-on:blur="validateFirstName()" />
                 <p v-if="errorLabels.firstNameError.length > 0" class="error">{{errorLabels.firstNameError}}</p><br v-else/>
-                <span class="mandatory">*</span><input type="text" name="lastName" v-model="baseModel.model.lastName" placeholder="Nom de famille" v-on:blur="validateLastName()" />
+                <input type="text" name="lastName" v-model="baseModel.model.lastName" placeholder="Nom de famille" v-on:blur="validateLastName()" />
                 <p v-if="errorLabels.lastNameError.length > 0" class="error">{{errorLabels.lastNameError}}</p><br v-else/>
             </div>
             <div id="candidateContact">
@@ -24,7 +24,7 @@
             <div id="candidateAdress">
                 <div><adress ref="adressMarkdown" :baseModel="baseModel.model.adress" :readOnly="readOnly"></adress></div>
             </div><br/>
-            <span class="mandatory">*</span><input type="text" name="dispoDate" v-model="baseModel.model.dispoDate" placeholder="Date de disponibilité" v-on:blur="validateDispoDate()" />
+            <input type="text" name="dispoDate" v-model="baseModel.model.dispoDate" placeholder="Date de disponibilité" v-on:blur="validateDispoDate()" />
             <p v-if="errorLabels.dispoDateError.length > 0" class="error">{{errorLabels.dispoDateError}}</p><br v-else/>
             <div>
                 <h2>Handicap</h2>

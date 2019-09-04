@@ -1,11 +1,11 @@
 <template>
     <div>
         <div id="updateAuth" v-if="readOnly === false">
-            <input type="text" name="login" v-model.trim="baseModel.login" placeholder="Login" v-on:blur="validateLogin()" /><span class="mandatory">*</span>
+            <input type="text" name="login" v-model.trim="baseModel.login" placeholder="Login" v-on:blur="validateLogin()" />
             <p v-if="errorLabels.loginError.length > 0" class="error">{{errorLabels.loginError}}</p><br v-else/>
-            <input type="password" name="password" v-model.trim="baseModel.password" placeholder="Password" v-on:blur="validatePassword()" /><span class="mandatory">*</span>
+            <input type="password" name="password" v-model.trim="baseModel.password" placeholder="Password" v-on:blur="validatePassword()" />
             <p v-if="errorLabels.passwordError.length > 0" class="error">{{errorLabels.passwordError}}</p><br v-else/>
-            <input type="password" name="verifPassword" v-model.trim="verifPassword" v-on:blur="validateVerifPassword()" /><span class="mandatory">*</span>
+            <input type="password" name="verifPassword" v-model.trim="verifPassword" v-on:blur="validateVerifPassword()" />
             <p v-if="errorLabels.verifPasswordError.length > 0" class="error">{{errorLabels.verifPasswordError}}</p><br v-else/>
         </div>
         <div id="readAuth" v-if="readOnly === true">

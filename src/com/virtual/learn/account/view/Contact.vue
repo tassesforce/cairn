@@ -1,16 +1,20 @@
 <template>
     <div>
         <div id="updateContact" v-if="readOnly === false">
-            <input type="text" name="phone" v-model="baseModel.phone" placeholder="PhoneNumber" v-on:blur="validatePhone()" />
-            <p v-if="errorLabels.phoneError.length > 0" class="error">{{errorLabels.phoneError}}</p><br v-else/>
-            <input type="text" name="mail" v-model="baseModel.mail" placeholder="MailAdress" v-on:blur="validateMail()" /><span class="mandatory">*</span>
-            <p v-if="errorLabels.mailError.length > 0" class="error">{{errorLabels.mailError}}</p><br v-else/>
+            <div class="smallInlineField">
+                <input type="text" name="phone" v-model="baseModel.phone" placeholder="PhoneNumber" v-on:blur="validatePhone()" />
+                <p v-if="errorLabels.phoneError.length > 0" class="error">{{errorLabels.phoneError}}</p><br v-else/>
+            </div>
+            <div class="bigInlineField">
+                <input type="text" name="mail" v-model="baseModel.mail" placeholder="MailAdress" v-on:blur="validateMail()" />
+                <p v-if="errorLabels.mailError.length > 0" class="error">{{errorLabels.mailError}}</p><br v-else/>
+            </div>
             <input type="text" name="web" v-model="baseModel.web" placeholder="Web" />
         </div>
 
         <div id="readContact" v-if="readOnly === true">
-            <label>{{baseModel.phone}}</label>
-            <label>{{baseModel.mail}}</label>
+            <label>{{baseModel.phone}}</label><br v-if="baseModel.phone != ''"/>
+            <label>{{baseModel.mail}}</label><br v-if="baseModel.mail != ''"/>
             <label>{{baseModel.web}}</label>
         </div>
     </div>

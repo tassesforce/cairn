@@ -1,6 +1,5 @@
 <template>
     <div id="page">
-        <h1>Mon compte</h1>
         <div id="content">
             <div class="form">
                 <!-- Choose the account type -->
@@ -174,10 +173,10 @@
 </script>
 
 <style scoped>
-    #content, .form {
+    /* #content, .form {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         padding: 20px;
         margin-top: 10px;
-    }
+    } */
 </style>

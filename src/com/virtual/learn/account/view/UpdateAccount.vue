@@ -1,6 +1,5 @@
 <template>
     <div id="page">
-        <h1>Mon compte</h1>
         <div id="content">
             <div class="form">
                 <b-collapse id="agency" accordion="account-type" class="mt-2">
@@ -14,9 +13,10 @@
                 </b-collapse>
             </div>
         </div>
-        <div>
-            <button type="button" v-on:click="cancel()">Annuler</button>
-            <button type="button" v-on:click="update()">Enregistrer</button>
+
+        <div id="buttons" class="bloc-buttons">
+            <a class="button downlight-button" v-on:click="cancel()">Annuler</a>
+            <a class="button highlight-button" v-on:click="update()">Enregistrer</a>
         </div>
     </div>
 </template>
@@ -88,8 +88,10 @@
         },
         methods: {
             cancel() {
-                var route = 'read' + this.accountType.charAt(0).toUpperCase() + this.accountType.slice(1) + "Account";
-                this.$router.go({name: route});
+                // var route = 'read' + this.accountType.charAt(0).toUpperCase() + this.accountType.slice(1) + "Account";
+                // var route = "readAccount";
+                // this.$router.go({name: route});
+                this.$router.go(-1);
             },
             update() {
                 var valid = this.validateForm();
@@ -138,10 +140,10 @@
 </script>
 
 <style scoped>
-    #content, .form {
+    /* #content, .form {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         padding: 20px;
         margin-top: 10px;
-    }
+    } */
 </style>

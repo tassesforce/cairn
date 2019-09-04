@@ -4,17 +4,19 @@
         <div id="updateAgency" v-if="readOnly === false" class="flex-container">
             <div class="mid-bloc">
                 <label class="mid-bloc-title">Coordonnées de l'agence</label>
-                <div class="column box-shadow">
-                    <input type="text" name="name" v-model="baseModel.model.name" placeholder="Name" v-on:blur="validateName()" /><span class="mandatory">*</span>
+                <div class="w90p column box-shadow">
+                    <input type="text" name="name" v-model="baseModel.model.name" placeholder="Name" v-on:blur="validateName()" />
                     <p v-if="errorLabels.nameError.length > 0" class="error">{{errorLabels.nameError}}</p><br v-else/>
-                    <input type="text" name="siret" v-model="baseModel.model.siret" placeholder="Siret" v-on:blur="validateSiret()" /><span class="mandatory">*</span>
+                    <input type="text" name="siret" v-model="baseModel.model.siret" placeholder="Siret" v-on:blur="validateSiret()" />
                     <p v-if="errorLabels.siretError.length > 0" class="error">{{errorLabels.siretError}}</p><br v-else/>
                     <adress ref="adressMarkdown" :baseModel="baseModel.model.adress" :readOnly="readOnly"></adress>
                 </div>
             </div>
             <div class="mid-bloc">
-                <label class="mid-bloc-title">Coordonnées du contact principal</label>
-                <div class="column box-shadow">
+                <div class="w90p" style="float:right">
+                    <label class="mid-bloc-title">Coordonnées du contact principal</label>
+                </div>
+                <div class="w90p column box-shadow" style="float: right">
                     <responsible ref="responsibleMarkdown" :baseModel="baseModel.model.responsible" :readOnly="readOnly"></responsible>
                     <contact ref="contactMarkdown" :baseModel="baseModel.model.contact" :readOnly="readOnly"></contact>
                 </div>
@@ -24,15 +26,17 @@
         <div id="readAgency" v-if="readOnly === true" class="flex-container"> 
             <div class="mid-bloc">
                 <label class="mid-bloc-title">Coordonnées de l'agence</label>
-                <div class="column box-shadow">
+                <div class="w90p column box-shadow">
                     <p>{{baseModel.model.name}}</p>
                     <p>{{baseModel.model.siret}}</p>
                     <adress ref="adressMarkdown" :baseModel="baseModel.model.adress" :readOnly="readOnly"></adress>
                 </div>
             </div>
             <div class="mid-bloc">
-                <label class="mid-bloc-title">Coordonnées du contact principal</label>
-                <div class="column box-shadow">
+                <div class="w90p" style="float:right">
+                    <label class="mid-bloc-title">Coordonnées du contact principal</label>
+                </div>
+                <div class="w90p column box-shadow" style="float: right">
                     <responsible ref="responsibleMarkdown" :baseModel="baseModel.model.responsible" :readOnly="readOnly"></responsible>
                     <contact ref="contactMarkdown" :baseModel="baseModel.model.contact" :readOnly="readOnly"></contact>
                 </div>
@@ -40,15 +44,25 @@
             
         </div>
 
-        <div id="agencyAuth">
-            <auth ref="authMarkdown" :baseModel="baseModel.auth" :readOnly="readOnly"></auth>
+        <div class="flex-container">
+            <div class="w100p">
+                <label class="mid-bloc-title">Coordonnées de l'agence</label>
+                <div class="w100p column box-shadow">
+                    <div id="agencyAuth">
+                        <auth ref="authMarkdown" :baseModel="baseModel.auth" :readOnly="readOnly"></auth>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <br/>
-        <div id="collaborators" class="flex-container collaborators-container">
+        
+        <div id="collaborators" class="collaborators-container">
             <div class="w100p">
                 <label class="collaborators-title">Collaborateurs</label>
-                <a class="button highlight-button title-button" v-on:click="createCollaborator()">Créer</a>
+                <a class="button highlight-button-create title-button" v-on:click="createCollaborator()">Créer</a>
+            </div>
+            <div class="w100p grid-container">
                 <div class="collaborators box-shadow" v-for="collab in baseModel.model.collaborators" v-bind:key="collab.id" >
                     <div><img src="../../../images/icons/trash.png" align= "right" class="icons" v-on:click="deleteCollab(collab.id)"/></div>
                     <div v-on:click="seeCollab(collab.id)">

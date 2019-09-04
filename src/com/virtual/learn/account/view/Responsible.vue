@@ -1,9 +1,9 @@
 <template>
     <div>
         <div id="updateResponsible" v-if="readOnly === false">
-            <span class="mandatory">*</span><input type="text" name="firstName" v-model="baseModel.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" />
+            <input type="text" name="firstName" v-model="baseModel.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" />
             <p v-if="errorLabels.firstNameError.length > 0" class="error">{{errorLabels.firstNameError}}</p><br v-else/>
-            <span class="mandatory">*</span><input type="text" name="lastName" v-model="baseModel.lastName" placeholder="LastName" v-on:blur="validateLastName()" />
+            <input type="text" name="lastName" v-model="baseModel.lastName" placeholder="LastName" v-on:blur="validateLastName()" />
             <p v-if="errorLabels.lastNameError.length > 0" class="error">{{errorLabels.lastNameError}}</p><br v-else/>
             <input type="text" name="position" v-model="baseModel.position" placeholder="Position" />
         </div>

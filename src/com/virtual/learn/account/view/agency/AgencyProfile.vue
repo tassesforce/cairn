@@ -16,7 +16,6 @@
                     <label>{{this.Name}}</label>
                 </div>
             </div>
-            <!-- <button class="logoff" type="button" v-on:click="logoff()">Déconnexion</button> -->
         </div>
         <div id="content" class="content">
             <router-view></router-view>

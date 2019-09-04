@@ -2,19 +2,25 @@
     <div>
         <div id="updateAdress" v-if="readOnly === false">
             <div>
-                <span class="mandatory">*</span><input type="number" name="number" v-model.number="baseModel.number" placeholder="number" v-on:blur="validateNumber()" />
+                <div class="smallInlineField">
+                <input type="text" name="number" v-model.number="baseModel.number" placeholder="number" v-on:blur="validateNumber()" />
                 <p v-if="errorLabels.numberError.length > 0" class="error">{{errorLabels.numberError}}</p><br v-else/>
-                <span class="mandatory">*</span><input type="text" name="label" v-model="baseModel.label" placeholder="label"  v-on:blur="validateLabel()"/>
+                </div>
+                <div class="bigInlineField">
+                <input type="text" name="label" v-model="baseModel.label" placeholder="label"  v-on:blur="validateLabel()"/>
                 <p v-if="errorLabels.labelError.length > 0" class="error">{{errorLabels.labelError}}</p><br v-else/>
+                </div>
             </div>
             <input type="text" name="complement1" v-model="baseModel.complement1" placeholder="complement1" />
             <input type="text" name="complement2" v-model="baseModel.complement2" placeholder="complement2" />
-            <span class="mandatory">*</span><input type="text" name="postalCode" v-model="baseModel.postalCode" placeholder="postalCode" v-on:blur="validatePostalCode()" />
-            <p v-if="errorLabels.postalCodeError.length > 0" class="error">{{errorLabels.postalCodeError}}</p><br v-else/>
-            <span class="mandatory">*</span><input type="text" name="town" v-model="baseModel.town" placeholder="town" v-on:blur="validateTown()" />
-            <p v-if="errorLabels.townError.length > 0" class="error">{{errorLabels.townError}}</p><br v-else/>
-            <input type="text" name="country" v-model="baseModel.country" placeholder="country" v-on:blur="validateCountry()" />
-            <p v-if="errorLabels.countryError.length > 0" class="error">{{errorLabels.countryError}}</p><br v-else/>
+            <div class="smallInlineField">
+                <input type="text" name="postalCode" v-model="baseModel.postalCode" placeholder="postalCode" v-on:blur="validatePostalCode()" />
+                <p v-if="errorLabels.postalCodeError.length > 0" class="error">{{errorLabels.postalCodeError}}</p><br v-else/>
+            </div>
+            <div class="bigInlineField">
+                <input type="text" name="town" v-model="baseModel.town" placeholder="town" v-on:blur="validateTown()" />
+                <p v-if="errorLabels.townError.length > 0" class="error">{{errorLabels.townError}}</p><br v-else/>
+            </div>
         </div>
 
         <div id="readAdress" v-if="readOnly === true">
@@ -64,10 +70,6 @@ export default {
                 town: {
                     empty: "Le nom de ville est obligatoire.",
                     format: "Le nom de ville ne semble pas correspondre au format attendu (Exemple : Lyon)."
-                },
-                country: {
-                    empty: "Le nom de pays est obligatoire.",
-                    format: "Le nom de pays ne semble pas correspondre au format attendu (Exemple : France)."
                 }
             }
         };
@@ -85,9 +87,6 @@ export default {
                 valid = false;
             }
             if (!this.validateTown()) {
-                valid = false;
-            }
-            if (!this.validateCountry()) {
                 valid = false;
             }
             return valid;
@@ -146,17 +145,6 @@ export default {
                 return false;
             } else {
                 this.errorLabels.townError = "";
-            }
-            return true;
-        }, 
-        validateCountry() {
-            if (typeof this.baseModel.country != "undefined" && this.baseModel.country.length > 0) {
-                if (!regExpCountry.test(this.baseModel.country)) {
-                    this.errorLabels.countryError = this.errorMessages.country.format;
-                    return false;
-                } else {
-                    this.errorLabels.countryError = "";
-                }
             }
             return true;
         }

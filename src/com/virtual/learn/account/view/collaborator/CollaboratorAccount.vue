@@ -9,11 +9,11 @@
         <div class="flex-container">
             <div class="mid-bloc">
                 <label class="mid-bloc-title">Informations personnelles</label>
-                <div class="column box-shadow">
+                <div class="w90p column box-shadow">
                     <div id="updateCollaborator" v-if="this.readOnly === false">
-                        <input type="text" name="firstName" v-model="account.model.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" /><span class="mandatory">*</span>
+                        <input type="text" name="firstName" v-model="account.model.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" />
                         <p v-if="errorLabels.firstNameError.length > 0" class="error">{{errorLabels.firstNameError}}</p><br v-else/>
-                        <input type="text" name="lastName" v-model="account.model.lastName" placeholder="LastName" v-on:blur="validateLastName()" /><span class="mandatory">*</span>
+                        <input type="text" name="lastName" v-model="account.model.lastName" placeholder="LastName" v-on:blur="validateLastName()" />
                         <p v-if="errorLabels.lastNameError.length > 0" class="error">{{errorLabels.lastNameError}}</p><br v-else/>
                         <input type="text" name="position" v-model="account.model.position" placeholder="Position" />
                     </div>
@@ -28,7 +28,7 @@
             <div class="mid-bloc">
                 <div class="right-bloc">
                     <label class="mid-bloc-title">Coordonnées du compte</label>
-                    <div class="column box-shadow">
+                    <div class="w90p column box-shadow">
                         <contact ref="contactMarkdown" :baseModel="account.model.contact" :readOnly="this.readOnly"></contact>
                     </div>
                 </div>

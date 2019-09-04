@@ -2,7 +2,7 @@
     <div>
         <h2>Caisse de retraite</h2>
         <div id="updateFund" v-if="readOnly === false">
-            <span class="mandatory">*</span><input type="text" name="name" v-model="baseModel.name" placeholder="Raison sociale" v-on:blur="validateName()"/>
+            <input type="text" name="name" v-model="baseModel.name" placeholder="Raison sociale" v-on:blur="validateName()"/>
             <p v-if="errorLabels.nameError.length > 0" class="error">{{errorLabels.nameError}}</p><br v-else/>
             <div id="fundAdress">
                 <div><adress ref="adressMarkdown" :baseModel="baseModel.adress" :readOnly="readOnly"></adress></div>

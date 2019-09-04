@@ -11,9 +11,9 @@
             <auth ref="authMarkdown" :baseModel="account.auth" :readOnly="false"></auth>
         </div><br/>
         <div id="updateCollaborator">
-            <span class="mandatory">*</span><input type="text" name="firstName" v-model="account.model.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" />
+            <input type="text" name="firstName" v-model="account.model.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" />
             <p v-if="errorLabels.firstNameError.length > 0" class="error">{{errorLabels.firstNameError}}</p><br v-else/>
-            <span class="mandatory">*</span><input type="text" name="lastName" v-model="account.model.lastName" placeholder="LastName" v-on:blur="validateLastName()" />
+            <input type="text" name="lastName" v-model="account.model.lastName" placeholder="LastName" v-on:blur="validateLastName()" />
             <p v-if="errorLabels.lastNameError.length > 0" class="error">{{errorLabels.lastNameError}}</p><br v-else/>
             <input type="text" name="position" v-model="account.model.position" placeholder="Position" />
         </div>

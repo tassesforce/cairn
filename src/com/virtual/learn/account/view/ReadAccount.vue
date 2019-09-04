@@ -1,6 +1,5 @@
 <template>
     <div id="page">
-        <h1>Mon compte</h1>
         <div id="content">
             <div class="form">
                 <div id="agency" v-if="accountType === 'agency'">
@@ -14,8 +13,9 @@
                 </div>
             </div>
         </div>
-        <div>
-            <button type="button" v-on:click="update()">Modifier</button>
+
+        <div id="buttons" class="bloc-buttons">
+            <a class="button highlight-button" v-on:click="update()">Modifier</a>
         </div>
     </div>
 </template>
@@ -67,10 +67,10 @@
 </script>
 
 <style scoped>
-    #content, .form {
+    /* #content, .form {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         padding: 20px;
         margin-top: 10px;
-    }
+    } */
 </style>
