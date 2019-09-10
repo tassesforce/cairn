@@ -6,32 +6,35 @@
             <adress :baseModel="this.referentAdress" :readOnly="true" />
         </div>
 
-        <div class="flex-container">
-            <div class="mid-bloc">
-                <label class="mid-bloc-title">Informations personnelles</label>
-                <div class="w90p column box-shadow">
-                    <div id="updateCollaborator" v-if="this.readOnly === false">
-                        <input type="text" name="firstName" v-model="account.model.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" />
-                        <p v-if="errorLabels.firstNameError.length > 0" class="error">{{errorLabels.firstNameError}}</p><br v-else/>
-                        <input type="text" name="lastName" v-model="account.model.lastName" placeholder="LastName" v-on:blur="validateLastName()" />
-                        <p v-if="errorLabels.lastNameError.length > 0" class="error">{{errorLabels.lastNameError}}</p><br v-else/>
-                        <input type="text" name="position" v-model="account.model.position" placeholder="Position" />
-                    </div>
+        <div class="titleLeftColumns titleColumns">
+            <label class="mid-bloc-title">Informations personnelles</label>
+        </div>
+        <div class="titleRightColumns titleColumns">
+            <label class="mid-bloc-title">Coordonnées du compte</label>
+        </div>
+        <div class="flex-container" v-if="this.readOnly === false">
+            <div id="updateCollaborator" class="w90p column box-shadow">
+                <input type="text" name="firstName" v-model="account.model.firstName" placeholder="FirstName" v-on:blur="validateFirstName()" />
+                <p v-if="errorLabels.firstNameError.length > 0" class="error">{{errorLabels.firstNameError}}</p><br v-else/>
+                <input type="text" name="lastName" v-model="account.model.lastName" placeholder="LastName" v-on:blur="validateLastName()" />
+                <p v-if="errorLabels.lastNameError.length > 0" class="error">{{errorLabels.lastNameError}}</p><br v-else/>
+                <input type="text" name="position" v-model="account.model.position" placeholder="Position" />
 
-                    <div id="readCollaborator" v-if="this.readOnly === true">
-                        <label>{{account.model.firstName}} {{account.model.lastName}}</label>
-                        <label>{{account.model.position}}</label>
-                    </div>
-                </div>
             </div>
 
-            <div class="mid-bloc">
-                <div class="right-bloc">
-                    <label class="mid-bloc-title">Coordonnées du compte</label>
-                    <div class="w90p column box-shadow">
-                        <contact ref="contactMarkdown" :baseModel="account.model.contact" :readOnly="this.readOnly"></contact>
-                    </div>
-                </div>
+            <div class="w90p column box-shadow fright " style="margin-left:10%;">
+                <contact ref="contactMarkdown" :baseModel="account.model.contact" :readOnly="this.readOnly"></contact>
+            </div>
+        </div>
+
+
+        <div class="flex-container" v-if="this.readOnly === true">
+            <div id="updateCollaborator" class="w90p column box-shadow">
+                <label>{{account.model.firstName}} {{account.model.lastName}}</label>
+                <label>{{account.model.position}}</label>
+            </div>
+            <div class="w90p column box-shadow fright " style="margin-left:10%;">
+                <contact ref="contactMarkdown" :baseModel="account.model.contact" :readOnly="this.readOnly"></contact>
             </div>
         </div>
 
@@ -41,18 +44,12 @@
                 <auth ref="authMarkdown" :baseModel="account.auth" :readOnly="this.readOnly"></auth>
             </div>
         </div>
-        
-
 
         <br/>
         <div id="buttons" class="bloc-buttons">
             <a class="button highlight-button" v-on:click="update()" v-if="this.readOnly == true && this.embedded == false">Modifier</a>
             <a class="button downlight-button" v-on:click="cancel()" v-if="this.readOnly == false || this.embedded == true">Annuler</a>
             <a class="button highlight-button" v-on:click="save()" v-if="this.readOnly == false">Enregistrer</a>
-
-            <!-- <button type="button" v-on:click="update()" v-if="this.readOnly == true && this.embedded == false">Modifier</button>
-            <button type="button" v-on:click="cancel()" v-if="this.readOnly == false || this.embedded == true">Annuler</button>
-            <button type="button" v-on:click="save()" v-if="this.readOnly == false">Enregistrer</button> -->
         </div>
     </div>
 </template>

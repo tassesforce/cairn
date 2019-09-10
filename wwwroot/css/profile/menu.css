@@ -1,5 +1,4 @@
 @import '../font/font.css';
-
 .top-menu {
     background: linear-gradient(to right, #26628C, #007A8C, #1FB2A9);
     height: 115px;
@@ -16,7 +15,7 @@
 
 .info {
     float: right;
-    width: 50%;
+    width: 30%;
     height: 100%;
 }
 
@@ -34,7 +33,7 @@
 .menu-text {
     font-family: DINPro;
     float: right;
-    color: white; 
+    color: white;
 }
 
 .menu-text label {
@@ -45,7 +44,7 @@
 }
 
 .menu-title {
-    color: white; 
+    color: white;
     padding-left: 50px;
     padding-top: 33px;
     width: 750px;
@@ -76,18 +75,19 @@
 }
 
 .content {
-    width: 1500px;
+    width: 90%;
     padding: 20px;
     float: left;
 }
 
-body > div {
+body>div {
     height: 100%;
 }
 
 .menu-accueil {
     margin-left: 30px;
 }
+
 .menu-accueil img {
     padding-left: 15px;
 }
@@ -95,6 +95,7 @@ body > div {
 .menu-catalogue {
     margin-left: 20px;
 }
+
 .menu-catalogue img {
     padding-left: 20px;
 }
@@ -102,6 +103,7 @@ body > div {
 .menu-immersion {
     margin-left: 15px;
 }
+
 .menu-immersion img {
     padding-left: 25px;
 }
