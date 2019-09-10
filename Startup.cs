@@ -31,12 +31,14 @@ namespace cairn_vue
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => true; // consent required
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddSession();
+            services.AddSession(opts => 
+            {
+                opts.Cookie.IsEssential = true; // make the session cookie Essential
+            });
 
             services.AddLogging(loggingBuilder =>
             loggingBuilder.AddSerilog(dispose: true));

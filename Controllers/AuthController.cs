@@ -63,11 +63,12 @@ namespace cairn.Controllers.Auth
                         return HttpError(correlationId, request.Method, client.BuildUri(request).ToString(), (int) response.StatusCode, response.Content);
                     }
                     userAuth = JsonConvert.DeserializeObject<UserAuthDTO>(response.Content);
-                    this.HttpContext.Session.Set(SessionConstant.JWT, userAuth);
+                    HttpContext.Session.Set(SessionConstant.JWT, userAuth);
                 }
                 TokenHandler handler = new TokenHandler(logger);
                 JwtSecurityToken token = handler.ReadToken(userAuth.AccessToken);
                 Claim accounTypeClaim = token.Payload.Claims.Single(c => c.Type == ClaimsConstant.ACCOUNT_TYPE);
+                
                 return Ok(accounTypeClaim.Value);
             }
         }
@@ -105,7 +106,7 @@ namespace cairn.Controllers.Auth
                     return HttpError(correlationId, request.Method, client.BuildUri(request).ToString(), (int) response.StatusCode, response.Content);
                 }
             }
-
+            this.HttpContext.Session.Clear();
             return Ok();
         }
 

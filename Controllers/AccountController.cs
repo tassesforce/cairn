@@ -423,7 +423,13 @@ namespace cairn.Controllers.Accounts
         /// <returns>IActionResult : Ok if we got the account</returns>
         public IActionResult GetAccount([FromQuery] string userId)
         {
-            UserAuthDTO userAuth = this.HttpContext.Session.Get<UserAuthDTO>(SessionConstant.JWT);
+            UserAuthDTO userAuth = HttpContext.Session.Get<UserAuthDTO>(SessionConstant.JWT);
+            logger.LogInformation("Nombre de clés " + HttpContext.Session.Keys.Count());
+            foreach (string key in this.HttpContext.Session.Keys)
+            {
+                logger.LogInformation("Session " + key + " : " + this.HttpContext.Session.Get<Object>(key));
+            }
+            //logger.LogInformation("userAuth : " + userAuth.AccessToken);
 
             // Validation of the access token, to see if we have to regenerate it
             JwtSecurityToken token = TokenHelper.ValidateUserAuth(this.HttpContext.Session, configuration, userAuth, logger);
