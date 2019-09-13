@@ -28,6 +28,9 @@ namespace cairn.Modules.Datas
         /// <summary>URL where to find the media</summary>
         [JsonProperty("media")]
         public string Media {get; set;}
+        /// <summary>Name of the picto to display</summary>
+        [JsonProperty("picto")]
+        public string Picto {get; set;}
         
     }
 }

@@ -1,0 +1,68 @@
+.criterias {
+    margin-left: 30px;
+}
+
+.modules-container {
+    width: 80%;
+    margin-left: 30px;
+    margin-top: 60px;
+}
+
+.modules {
+    padding: 20px;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.modules img {
+    float: left;
+    margin-right: 10px;
+}
+
+.modules label {
+    margin-bottom: 0;
+}
+
+.modules .label {
+    color: #707070;
+}
+
+.modules .dynamicLabel {
+    color: #333333;
+}
+
+.criterias input {
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.searchByLabel {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.searchByLabel input {
+    width: 40%;
+}
+
+.advancedSearchLink {
+    padding-top: 8px;
+    color: #555454;
+    padding-left: 5%;
+}
+
+.advancedSearchLink a {
+    color: #555454;
+}
+
+.advancedSearch {
+    width: 50%;
+    margin: 0 auto;
+    clear: both;
+}
+
+.advancedSearch label {
+    color: #707070;
+    margin-right: 20px;
+}

@@ -1,29 +1,37 @@
 <template>
     <div id="page">
-        <div id="searchCriterias">
-            <input type="text" name="label" v-model="searchCriterias.label" placeholder="Label" />
-            <button type="button" v-on:click="search()">Rechercher</button>
-            <b-button v-b-toggle.advanced class="m-1" >Recherche avancée</b-button>
-            <b-collapse id="advanced" accordion="advanced-search" class="mt-2">
-                 <select v-on:change="sorting($event)">
-                    <option value="default" disabled selected>Durée</option>
-                    <option value="lessLengthFirst">Par ordre croissant</option>
-                    <option value="moreLengthFirst">Par ordre décroissant</option>
-                </select> 
-                <select v-on:change="sorting($event)">
-                    <option value="default" disabled selected>Crédits</option>
-                    <option value="lessCreditsFirst">Par ordre croissant</option>
-                    <option value="moreCreditsFirst">Par ordre décroissant</option>
-                </select> 
-            </b-collapse>
+        <div id="searchCriterias" class="criterias">
+            <div class="searchByLabel">
+                <input type="text" name="label" v-model="searchCriterias.label" placeholder="Label" class="fleft" />
+                <div class="search-button" v-on:click="search()"></div>
+                <div class="advancedSearchLink fright">
+                    <a v-b-toggle.advanced>Recherche avancée <img src="../../../../../../wwwroot/assets/images/buttons/arrow_down.png"></a>
+                </div>
+            </div>
+            <div class="advancedSearch">
+                <b-collapse id="advanced" accordion="advanced-search" class="mt-2">
+                    <label>Filtrer par : </label>
+                    <select v-on:change="sorting($event)">
+                        <option value="default" disabled selected>Durée</option>
+                        <option value="lessLengthFirst">Par ordre croissant</option>
+                        <option value="moreLengthFirst">Par ordre décroissant</option>
+                    </select> 
+                    <select v-on:change="sorting($event)">
+                        <option value="default" disabled selected>Crédits</option>
+                        <option value="lessCreditsFirst">Par ordre croissant</option>
+                        <option value="moreCreditsFirst">Par ordre décroissant</option>
+                    </select> 
+                </b-collapse>
+            </div>
         </div>
-        <div id="modules">
-            <div class="module" v-for="module in baseModel.modules" v-bind:key="module.moduleId" >
-                <div>
+        <div id="modules" class="modules-container">
+            <div class="w100p grid-container">
+                <div class="modules box-shadow" v-for="module in baseModel.modules" v-bind:key="module.moduleId" >
+                    <img v-bind:src="require('../../../../../../wwwroot/assets/images/modules/' + module.picto)" >
                     <b>{{module.label}}</b><br/>
-                    Durée : {{module.length}} min<br/>
-                    Type : {{module.type}}<br/>
-                    Nombre de crédits : {{module.nbCredits}}
+                    <label class="label">Durée :</label> <label class="dynamicLabel">{{module.length}} min</label><br/>
+                    <label class="label">Type :</label> <label class="dynamicLabel">{{module.type}}</label><br/>
+                    <label class="label">Nombre de crédits :</label> <label class="dynamicLabel">{{module.nbCredits}}</label>
                 </div>
             </div>
         </div>
@@ -114,6 +122,10 @@
                 }
 
                 return this.baseModel.modules.sort(compare);
+            },
+            getImageModule(module) {
+                console.log(module.type);
+                return "../../../../../../wwwroot/assets/" + module.type + ".png";
             }
         }
     }
@@ -126,4 +138,5 @@
     margin: 20px;
     padding: 20px;
 }
+@import '../../../../../../wwwroot/css/modules/modules.css';
 </style>

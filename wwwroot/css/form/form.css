@@ -1,5 +1,4 @@
 @import '../font/font.css';
-
 .bloc {
     width: 80%;
     margin-left: 30px;
@@ -14,10 +13,10 @@
 }
 
 .box-shadow {
-    box-shadow: 1px 1px 20px  rgba(0, 0, 0, .22);
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, .22);
 }
 
-.column{
+.column {
     padding: 20px;
 }
 
@@ -45,59 +44,12 @@
 }
 
 .right-bloc {
-    float:right; 
+    float: right;
     width: 90%;
 }
 
 .right-bloc .column {
     width: 100%;
-}
-
-.highlight-button {
-    background-color: #1482ef;
-    box-shadow: 0px 0px 0px 0px #1482ef;
-}
-
-.highlight-button:hover {
-    box-shadow: 1px 1px 20px #1482ef;
-}
-
-.highlight-button-create {
-    background-color: #26628c;
-    box-shadow: 0px 0px 0px 0px #26628c;
-}
-
-.highlight-button-create:hover {
-    box-shadow: 1px 1px 20px #26628c;
-}
-
-.downlight-button {
-    background-color: #d1d2d6;
-}
-
-.downlight-button:hover {
-    box-shadow: 1px 1px 20px #d1d2d6;
-}
-
-.button {
-	border-radius:28px;
-	cursor:pointer;
-    color:#ffffff !important;
-    font-weight: bold;
-	font-size:17px;
-	padding:12px 75px;
-	text-decoration:none;
-}
-.button:active {
-    position:relative;
-    color: white;
-	top:1px;
-}
-
-.bloc-buttons {
-    text-align: center;
-    color: white;
-    margin-top: 50px;
 }
 
 .mandatory {
@@ -111,16 +63,23 @@
 }
 
 input {
-    border-radius:28px;
+    border-radius: 28px;
     border: solid 1px #D7DAE2;
     margin: 5px;
-    padding:3px;
+    padding: 3px;
     width: 90%;
     padding-left: 10px;
 }
 
+select {
+    border-radius: 28px;
+    border: solid 1px #D7DAE2;
+    margin: 5px;
+    padding: 3px;
+}
+
 a:hover {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .title {
@@ -139,7 +98,8 @@ a:hover {
     width: 90%;
 }
 
-#content, #content .form {
+#content,
+#content .form {
     border: none !important;
 }
 

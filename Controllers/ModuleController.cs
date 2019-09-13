@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RestSharp;
 using SerilogTimings;
+using cairn.Enum;
 
 namespace cairn.Controllers.Modules
 {
@@ -62,10 +63,44 @@ namespace cairn.Controllers.Modules
                     } else 
                     {
                         modules = JsonConvert.DeserializeObject<List<Module>>(response.Content);
+                        foreach (Module module in modules)
+                        {
+                            module.Picto = getPictoToDisplay(module);
+                        }
                     }
                 }
            
             return Ok(modules);
+        }
+
+        private string getPictoToDisplay(Module module)
+        {
+            if (module == null || string.IsNullOrEmpty(module.Type)) {
+                return "";
+            }
+            if (module.Type.Equals(ModuleEnum.BASE.Value))
+            {
+                return ModuleEnum.BASE.Text;
+            } else if (module.Type.Equals(ModuleEnum.SAVOIR_ETRE.Value))
+            {
+                return ModuleEnum.SAVOIR_ETRE.Text;
+            } else if (module.Type.Equals(ModuleEnum.SECURITE.Value))
+            {
+                return ModuleEnum.SECURITE.Text;
+            } else if (module.Type.Equals(ModuleEnum.QUALITE.Value))
+            {
+                return ModuleEnum.QUALITE.Text;
+            } else if (module.Type.Equals(ModuleEnum.TRANSPORT_LOGISTIQUE.Value))
+            {
+                return ModuleEnum.TRANSPORT_LOGISTIQUE.Text;
+            } else if (module.Type.Equals(ModuleEnum.ORIENTATION.Value))
+            {
+                return ModuleEnum.ORIENTATION.Text;
+            } else if (module.Type.Equals(ModuleEnum.POSTE.Value))
+            {
+                return ModuleEnum.POSTE.Text;
+            }
+            return "";
         }
 
     }

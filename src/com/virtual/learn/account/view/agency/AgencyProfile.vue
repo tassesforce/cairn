@@ -1,8 +1,8 @@
 <template>
     <div style="height: 100%">
         <div id="left-menu" class="menu-left">
-            <div class="menu-accueil"><img src="../../../../../../../wwwroot/assets/ic_person.png"/>Accueil</div>
-            <div class="menu-catalogue"  v-on:click="GoToCatalog()"><img src="../../../../../../../wwwroot/assets/open-book-top-view.png"/>Catalogue</div>
+            <div class="menu-accueil" v-on:click="GoHome()"><img src="../../../../../../../wwwroot/assets/ic_person.png"/>Accueil</div>
+            <div class="menu-catalogue" v-on:click="GoToCatalog()"><img src="../../../../../../../wwwroot/assets/open-book-top-view.png"/>Catalogue</div>
             <div class="menu-immersion"><img src="../../../../../../../wwwroot/assets/ic_candidate.png"/>Immersions</div>
         </div>
         <div id="top-menu" class="top-menu">
@@ -62,10 +62,15 @@
             },
             GoToCatalog() {
                 this.$router.push({name: "catalog"});
+            },
+            GoHome() {
+                this.$router.push("/readAccount");
             }
         }
     }
 </script>
 
 <style scoped>
+    @import '../../../../../../../wwwroot/css/form/form.css';
+    @import '../../../../../../../wwwroot/css/form/button.css';
 </style>
