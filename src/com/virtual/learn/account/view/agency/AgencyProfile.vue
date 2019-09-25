@@ -73,4 +73,5 @@
 <style scoped>
     @import '../../../../../../../wwwroot/css/form/form.css';
     @import '../../../../../../../wwwroot/css/form/button.css';
+    @import '../../../../../../../wwwroot/css/profile/menu.css';
 </style>

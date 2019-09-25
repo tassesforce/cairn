@@ -1,6 +1,6 @@
 <template>
     <div id="page">
-        <div id="content">
+        <div id="content" class="content">
             <div class="form">
                 <div id="agency" v-if="accountType === 'agency'">
                     <agencyAccount ref="agency" :baseModel="this.account" :readOnly="true"></agencyAccount>

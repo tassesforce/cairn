@@ -74,6 +74,6 @@
     }
 </script>
 
-<style>
+<style scoped>
     @import '../../../../../../../wwwroot/css/profile/menu.css';
 </style>

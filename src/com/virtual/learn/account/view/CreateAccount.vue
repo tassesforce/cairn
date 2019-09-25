@@ -1,6 +1,6 @@
 <template>
     <div id="page">
-        <div id="content">
+        <div id="content" class="content">
             <div class="form">
                 <!-- Choose the account type -->
                 <div v-if = "isUpdate == false">
@@ -173,10 +173,7 @@
 </script>
 
 <style scoped>
-    /* #content, .form {
-        background-color: #FFFFFF;
-        border: 1px solid #CCCCCC;
-        padding: 20px;
-        margin-top: 10px;
-    } */
+    @import '../../../../../../wwwroot/css/profile/menu.css';
+    @import '../../../../../../wwwroot/css/form/form.css';
+    @import '../../../../../../wwwroot/css/form/button.css';
 </style>

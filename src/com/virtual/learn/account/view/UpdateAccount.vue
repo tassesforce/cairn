@@ -1,6 +1,6 @@
 <template>
     <div id="page">
-        <div id="content">
+        <div id="content" class="content">
             <div class="form">
                 <b-collapse id="agency" accordion="account-type" class="mt-2">
                     <agencyAccount ref="agency" :baseModel="this.account" :readOnly="false"></agencyAccount>
